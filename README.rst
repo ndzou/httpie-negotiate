@@ -20,6 +20,8 @@ Usage
 
 You need to have a valid Kerberos principal, run kinit first if necessary.
 
+Note: Kerberos mutual authentication is set to REQUIRED by default.
+
 .. code-block:: bash
 
     $ http --auth-type=negotiate --auth : https://example.org
