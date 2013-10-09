@@ -1,7 +1,7 @@
 httpie-negotiate
 ===========
 
-SPNEGO (GSS Negotiate) auth plugin for `HTTPie <https://github.com/jkbr/httpie>`_.
+SPNEGO (GSS Negotiate) auth plugin for `HTTPie <https://github.com/jkbr/httpie>`_, based on Jakub's httpie-ntlm example.
 
 
 Installation
