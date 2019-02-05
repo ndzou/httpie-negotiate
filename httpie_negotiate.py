@@ -2,6 +2,8 @@
 SPNEGO (GSS Negotiate) auth plugin for HTTPie.
 
 """
+import os
+
 from httpie.plugins import AuthPlugin
 
 
@@ -17,5 +19,14 @@ class NegotiateAuthPlugin(AuthPlugin):
     description = ''
 
     def get_auth(self, username, password):
-        from requests_kerberos import HTTPKerberosAuth
-        return HTTPKerberosAuth()
+        from requests_kerberos import HTTPKerberosAuth, OPTIONAL, DISABLED, REQUIRED
+        pref = os.environ.get("HTTPIE_KERBEROS_MUTUAL")
+        if pref in  ["optional","OPTIONAL"]:
+            kerberos_auth = HTTPKerberosAuth(mutual_authentication=OPTIONAL)
+        elif pref in ["disabled","DISABLED"]:
+            kerberos_auth = HTTPKerberosAuth(mutual_authentication=DISABLED)
+        elif pref == None or pref in ["required","REQUIRED"]:
+            kerberos_auth = HTTPKerberosAuth()
+        else:
+            raise Exception("Invalid HTTPIE_KEBEROS_MUTUAL value {}".format(pref))
+        return kerberos_auth

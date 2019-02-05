@@ -20,11 +20,18 @@ Usage
 
 You need to have a valid Kerberos principal, run kinit first if necessary.
 
-Note: Kerberos mutual authentication is set to REQUIRED by default.
-
 .. code-block:: bash
 
     $ http --auth-type=negotiate --auth : https://example.org
+
+
+Kerberos mutual authentication is REQUIRED by default and is recommended.
+If you strictly require mutual authentication to be OPTIONAL or DISBALED, then you can use the ``HTTPIE_KERBEROS_MUTUAL`` environment variable.
+
+.. code-block:: bash
+
+   $ HTTPIE_KERBEROS_MUTUAL=OPTIONAL http --auth-type=negotiate --auth : https://example.org
+   $ HTTPIE_KERBEORS_MUTUAL=DISABLED http --auth-type=negotiate --auth : https://example.org
 
 
 You can also use `HTTPie sessions <https://github.com/jkbr/httpie#sessions>`_:
