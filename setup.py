@@ -9,7 +9,7 @@ setup(
     name='httpie-negotiate',
     description='SPNEGO (GSS Negotiate) auth plugin for HTTPie.',
     long_description=open('README.rst').read().strip(),
-    version='1.0.0',
+    version='1.0.1',
     author='Nan Zou',
     author_email='nanzou@gmail.com',
     license='BSD',
